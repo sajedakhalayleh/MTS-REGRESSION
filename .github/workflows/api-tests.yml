@@ -1,22 +1,16 @@
 name: API Tests
-
 on:
   push:
   workflow_dispatch:
-
 jobs:
   run-tests:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
       - run: npm install -g newman newman-reporter-htmlextra
-
-      - run: |
       - run: newman run NFLOW_MTS_AUTOMATED.postman_collection.json -e NFLOW_MTS.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export report.html
       - if: always()
         uses: actions/upload-artifact@v4
