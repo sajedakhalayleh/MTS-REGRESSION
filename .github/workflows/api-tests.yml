@@ -1,4 +1,4 @@
-name: API Tests
+name: MTS TEST
 on:
   push:
   workflow_dispatch:
