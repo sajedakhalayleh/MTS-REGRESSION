@@ -1,16 +1,14 @@
-name: MTS TEST
+name: API Tests
 
 on:
   push:
   workflow_dispatch:
-
   schedule:
-    - cron: '0 6 * * *'
+    - cron: '0 6 * * *'   # كل يوم الساعة 9 صباحًا بتوقيت الأردن (6 UTC)
 
 jobs:
   run-tests:
     runs-on: self-hosted
-
     steps:
       - uses: actions/checkout@v4
 
@@ -27,3 +25,17 @@ jobs:
         with:
           name: postman-report
           path: report.html
+
+      - name: Send Email Report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "تقرير فحوصات API - ${{ github.run_id }}"
+          to: s.khalayleh@nafith.com
+          from: GitHub Actions
+          body: "مرفق تقرير فحوصات API لآخر تشغيل. النتيجة: ${{ job.status }}"
+          attachments: report.html
