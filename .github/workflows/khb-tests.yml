@@ -32,7 +32,7 @@ jobs:
           username: skhalayleh@nafith.com
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "KHB-Live - ${{ github.run_id }}"
-          to: haljassem@nafith.com
+          to: haljassem@nafith.com, skhalayleh@nafith.com
           from: skhalayleh@nafith.com
           body: "KHB daily health test (Live): ${{ job.status }}"
           attachments: khb-report.html
