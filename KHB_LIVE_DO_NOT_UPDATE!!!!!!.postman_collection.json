@@ -1,0 +1,3653 @@
+{
+  "info": {
+    "_postman_id": "737d55a6-3366-4b9a-a1f0-3dd03aba049f",
+    "name": "KHB_LIVE_DO_NOT_UPDATE!!!!!!",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "23895635",
+    "_collection_link": "https://go.postman.co/collection/23895635-737d55a6-3366-4b9a-a1f0-3dd03aba049f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "LOGIN_ADMIN",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 200) {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.environment.set(\"Admin_Token\", jsonData.data.token);\r",
+              "}\r",
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/auth/login"
+          },
+          {
+            "key": "Cookie",
+            "value": "ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765352771126%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"userName\":\"nafithadmin\",\"password\":\"Lz7F27@q\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Users/LogIn",
+          "host": [
+            "{{baseURL}}Users"
+          ],
+          "path": [
+            "LogIn"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FLEETS_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/fleets"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765355039338%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Fleets/GetGrid",
+          "host": [
+            "{{baseURL}}Fleets"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FLEETS_FILTER_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/fleets"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765368450807%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":10,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"type\":{\"value\":\"TRUCK\",\"Operation\":\"Equal\"},\"usage\":\"HEAD_VEHICLE_NOT_SHIPPING\",\"representativeNameLocalized\":{\"value\":\"momen\",\"Operation\":\"Equal\"},\"registrationType\":\"OWNER\",\"plateCode\":\"A\",\"plateNo\":\"6087896\",\"statusCode\":{\"value\":\"ACTIVE\",\"Operation\":\"Equal\"},\"createdDate\":{\"Value\":\"2025-12-17\",\"Value2\":\"2025-12-30\",\"Operation\":\"Between\"},\"licenseExpiryDate\":{\"Value\":\"2025-12-08\",\"Value2\":\"2025-12-09\",\"Operation\":\"Between\"}}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Fleets/GetGrid",
+          "host": [
+            "{{baseURL}}Fleets"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FlEETS_USER-GET_VIEW",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/fleets/view/3171"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765368684856%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}Fleets/GetView?Id=3171",
+          "host": [
+            "{{baseURL}}Fleets"
+          ],
+          "path": [
+            "GetView"
+          ],
+          "query": [
+            {
+              "key": "Id",
+              "value": "3171"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FLEETS_GET_LOG",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/fleets/activity-log/3171"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765368886837%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"EntityId\":\"3171\",\"ActionName\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Fleets/GetLog",
+          "host": [
+            "{{baseURL}}Fleets"
+          ],
+          "path": [
+            "GetLog"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FLEETS_EXPORT_EXCEL",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/fleets"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765360097220%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":0,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Fleets/ExportExcelReport",
+          "host": [
+            "{{baseURL}}Fleets"
+          ],
+          "path": [
+            "ExportExcelReport"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USERS_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/users"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765356024093%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"statusCode\":{\"Operation\":\"Equal\"}}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Users/GetGrid",
+          "host": [
+            "{{baseURL}}Users"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USERS_FILTER_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/users"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765369262056%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":10,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"username\":\"199TC01\",\"fullNameLocalized\":\"MOMEN\",\"role\":\"TRUCKING_COMPANY\",\"commercialNameLocalized\":\"MOMEN\",\"referenceNo\":\"4849789\",\"createdDate\":{\"Value\":\"2025-12-01\",\"Value2\":\"2025-12-01\",\"Operation\":\"Between\"},\"statusCode\":{\"value\":\"ACTIVE\",\"Operation\":\"Equal\"},\"areaCode\":\"962\",\"mobileNo\":\"796152888\",\"email\":\"MOMEN@GMAIL.COM\"}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Users/GetGrid",
+          "host": [
+            "{{baseURL}}Users"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USERS_GET_USER_PROFILE",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/users/view/53"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765371083374%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}Users/GetUserProfile",
+          "host": [
+            "{{baseURL}}Users"
+          ],
+          "path": [
+            "GetUserProfile"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USERS_GET_LOG",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/users/activity-log/53"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765371244714%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"EntityId\":\"53\",\"ActionName\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Users/GetLog",
+          "host": [
+            "{{baseURL}}Users"
+          ],
+          "path": [
+            "GetLog"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "USERS_EXPORT_EXCEL",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6IjM1MWVjYmI3LTA4NmQtNGUyOS05ZTE3LTNkYzQzMWI5NWUzZCIsIm5iZiI6MTc2NTM2MDQ2OCwiZXhwIjoxNzY1MzY3NjY4LCJpYXQiOjE3NjUzNjA0Njh9.Gd889eIQT_1SLDcIo5ecSEzYlz9yRrKnXI8DmFCWRDI"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/users"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7PUOfyXzSZiJJ3yHp0hVGyxpHeF5jMG0XwEM7fflP6UO9VxEoVZ7b4_0Kd2h-ADBUPlnCQgQYJRQRurNenlEFgszfQp7V1IxAgFRMkYepc_1bFJpF6x6-ahfyYpTTPH8TZai_yg40N2eYmVXi2JMYZldudySTPZYuaucVsRUX7hlKZEwCEC_cq-mn6I1EOvoB_dYhOyYedK1dUrwBbHiqenfWUq_ybIhPpF8hpoVInEe4EpQcnmBgL0SuzsHLkvGNez0a6JUlGRga3lljZQl_wY8OET0BrUs3U9It6gzP_KcNv2cEowCKxti8ijfy6sUyR9FL5zbuoE4mgKyb3S50ykorbFThnYQFEo0AZESJzLqkA5ONWSHh2OxwfyZ3NIr8j3ddu53GEokZCP6GGKLxQc5OPPg7zIwVlucv-MjdXpK_9E7hF8Q3hOHiE_G13_ahdkwCXL6SgUZfI44et13aXcGFEqWsrCL5wXKDKQO229ekPRz9o0msEsw_p_Aov0UIGy7hM2u_rrLXPse5jIgTDgjCikf925tonKEckQD5QG2nWXurVf3ciXVTFKPjeiYgkwekCMi3xKH6aRlR4CsC85y3UyqrWwd0DUyqsBAmnudfTMtyn4c-4y9UddyBDvczSPm4bPiRVVzUTWkNTMZwXE9_oMFTEJz4e7z-TDxkW4PIM13_cQesx77jYrs979Hl5b2ZKpVPj8X6Km9SdoxOv1F5ccfwUzGwdLWOlP7ThbcpG5Fo8-Zw-y1QCahJ677b_1sOhy6w6-aTWDLKnTNWjIselyDdVVhL8_3ZZNg-bNWBNbyeCFwBRPpGeSnONtBk-Wy1wFf5fcXwAtyC9pGx5FQIUK-AubdQkVyubqN6XbJk3vG3OmScH11zM2ek_WY6p_McUf4nDVeM7yziv0QjNURNOEm1Mfta2iQgmJB5rXYRVLsb_p9-H_OEwYAcK1Mk; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765360492956%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":0,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Users/ExcelReport",
+          "host": [
+            "{{baseURL}}Users"
+          ],
+          "path": [
+            "ExcelReport"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "RFIDS_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/tagging"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765356276555%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}RFIDs/GetGrid",
+          "host": [
+            "{{baseURL}}RFIDs"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CARGO_RELEASES_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-release"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765356445432%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}CargoRelease/GetGrid",
+          "host": [
+            "{{baseURL}}CargoRelease"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CARGO_RELEASES_FILTER_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-release"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765372388191%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":10,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"serialNo\":\"CRN250000002542\",\"bayanNo\":\"745\",\"type\":{\"value\":\"CARGO\",\"Operation\":\"Equal\"},\"cargoTypeCode\":\"MISCELLANEOUS_GOODS\",\"statusCode\":\"ACTIVE\",\"cargoDesc\":\"هواتف ذكية\",\"clearingAgentNameForeign\":\"شركة الهدايه للتخليص على البضائع\"}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}CargoRelease/GetGrid",
+          "host": [
+            "{{baseURL}}CargoRelease"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CARGO_RELEASE_GET_VIEW",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-release/view/3723"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765372603282%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}CargoRelease/GetView?Id=3723",
+          "host": [
+            "{{baseURL}}CargoRelease"
+          ],
+          "path": [
+            "GetView"
+          ],
+          "query": [
+            {
+              "key": "Id",
+              "value": "3723"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CARGO_RELEASE_GET_LOG",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-release/activity-log/3723"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765372967408%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"EntityId\":\"3723\",\"ActionName\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}CargoRelease/GetLogForCargo",
+          "host": [
+            "{{baseURL}}CargoRelease"
+          ],
+          "path": [
+            "GetLogForCargo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CARGO_RELEASES_EXPORT_EXCEL",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6IjM1MWVjYmI3LTA4NmQtNGUyOS05ZTE3LTNkYzQzMWI5NWUzZCIsIm5iZiI6MTc2NTM2MDQ2OCwiZXhwIjoxNzY1MzY3NjY4LCJpYXQiOjE3NjUzNjA0Njh9.Gd889eIQT_1SLDcIo5ecSEzYlz9yRrKnXI8DmFCWRDI"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-release"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7PUOfyXzSZiJJ3yHp0hVGyxpHeF5jMG0XwEM7fflP6UO9VxEoVZ7b4_0Kd2h-ADBUPlnCQgQYJRQRurNenlEFgszfQp7V1IxAgFRMkYepc_1bFJpF6x6-ahfyYpTTPH8TZai_yg40N2eYmVXi2JMYZldudySTPZYuaucVsRUX7hlKZEwCEC_cq-mn6I1EOvoB_dYhOyYedK1dUrwBbHiqenfWUq_ybIhPpF8hpoVInEe4EpQcnmBgL0SuzsHLkvGNez0a6JUlGRga3lljZQl_wY8OET0BrUs3U9It6gzP_KcNv2cEowCKxti8ijfy6sUyR9FL5zbuoE4mgKyb3S50ykorbFThnYQFEo0AZESJzLqkA5ONWSHh2OxwfyZ3NIr8j3ddu53GEokZCP6GGKLxQc5OPPg7zIwVlucv-MjdXpK_9E7hF8Q3hOHiE_G13_ahdkwCXL6SgUZfI44et13aXcGFEqWsrCL5wXKDKQO229ekPRz9o0msEsw_p_Aov0UIGy7hM2u_rrLXPse5jIgTDgjCikf925tonKEckQD5QG2nWXurVf3ciXVTFKPjeiYgkwekCMi3xKH6aRlR4CsC85y3UyqrWwd0DUyqsBAmnudfTMtyn4c-4y9UddyBDvczSPm4bPiRVVzUTWkNTMZwXE9_oMFTEJz4e7z-TDxkW4PIM13_cQesx77jYrs979Hl5b2ZKpVPj8X6Km9SdoxOv1F5ccfwUzGwdLWOlP7ThbcpG5Fo8-Zw-y1QCahJ677b_1sOhy6w6-aTWDLKnTNWjIselyDdVVhL8_3ZZNg-bNWBNbyeCFwBRPpGeSnONtBk-Wy1wFf5fcXwAtyC9pGx5FQIUK-AubdQkVyubqN6XbJk3vG3OmScH11zM2ek_WY6p_McUf4nDVeM7yziv0QjNURNOEm1Mfta2iQgmJB5rXYRVLsb_p9-H_OEwYAcK1Mk; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765361014144%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":0,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}CargoRelease/ExcelReport",
+          "host": [
+            "{{baseURL}}CargoRelease"
+          ],
+          "path": [
+            "ExcelReport"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PERMITS_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-permits"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765356774308%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Permits/GetGrid",
+          "host": [
+            "{{baseURL}}Permits"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PERMITS_FILTER_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-permits"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765373308729%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":10,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"permitNumber\":\"202500002753\",\"bayanNo\":\"1001\",\"truckPlateNumber\":\"498498\",\"truckPlateCode\":\"S\",\"trailerPlateNumber\":\"448949\",\"trailerPlateCode\":\"S\",\"statusCode\":\"COMPLETED\",\"permitType\":\"GENERAL_CARGO_EXPORT\",\"cargoType\":\"CEMENT_SILO\",\"cargoSerialNo\":\"202500002753\",\"driverDocumentNumber\":\"9921561598\",\"driverName\":\"MOMEN\",\"createdDate\":{\"Value\":\"2025-12-10\",\"Value2\":\"2025-12-10\",\"Operation\":\"Between\"}}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Permits/GetGrid",
+          "host": [
+            "{{baseURL}}Permits"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PERMITS_USER-GET_VIEW",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-permits/view/2253"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765373431159%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}Permits/GetView?Id=2253",
+          "host": [
+            "{{baseURL}}Permits"
+          ],
+          "path": [
+            "GetView"
+          ],
+          "query": [
+            {
+              "key": "Id",
+              "value": "2253"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PERMITS_GET_LOG",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-permits/activity-log/2253"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765373673674%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"EntityId\":\"2253\",\"ActionName\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Permits/GetLogs",
+          "host": [
+            "{{baseURL}}Permits"
+          ],
+          "path": [
+            "GetLogs"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PERMITS_EXPORT_EXCEL",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6IjM1MWVjYmI3LTA4NmQtNGUyOS05ZTE3LTNkYzQzMWI5NWUzZCIsIm5iZiI6MTc2NTM2MDQ2OCwiZXhwIjoxNzY1MzY3NjY4LCJpYXQiOjE3NjUzNjA0Njh9.Gd889eIQT_1SLDcIo5ecSEzYlz9yRrKnXI8DmFCWRDI"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/cargo-permits"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7PUOfyXzSZiJJ3yHp0hVGyxpHeF5jMG0XwEM7fflP6UO9VxEoVZ7b4_0Kd2h-ADBUPlnCQgQYJRQRurNenlEFgszfQp7V1IxAgFRMkYepc_1bFJpF6x6-ahfyYpTTPH8TZai_yg40N2eYmVXi2JMYZldudySTPZYuaucVsRUX7hlKZEwCEC_cq-mn6I1EOvoB_dYhOyYedK1dUrwBbHiqenfWUq_ybIhPpF8hpoVInEe4EpQcnmBgL0SuzsHLkvGNez0a6JUlGRga3lljZQl_wY8OET0BrUs3U9It6gzP_KcNv2cEowCKxti8ijfy6sUyR9FL5zbuoE4mgKyb3S50ykorbFThnYQFEo0AZESJzLqkA5ONWSHh2OxwfyZ3NIr8j3ddu53GEokZCP6GGKLxQc5OPPg7zIwVlucv-MjdXpK_9E7hF8Q3hOHiE_G13_ahdkwCXL6SgUZfI44et13aXcGFEqWsrCL5wXKDKQO229ekPRz9o0msEsw_p_Aov0UIGy7hM2u_rrLXPse5jIgTDgjCikf925tonKEckQD5QG2nWXurVf3ciXVTFKPjeiYgkwekCMi3xKH6aRlR4CsC85y3UyqrWwd0DUyqsBAmnudfTMtyn4c-4y9UddyBDvczSPm4bPiRVVzUTWkNTMZwXE9_oMFTEJz4e7z-TDxkW4PIM13_cQesx77jYrs979Hl5b2ZKpVPj8X6Km9SdoxOv1F5ccfwUzGwdLWOlP7ThbcpG5Fo8-Zw-y1QCahJ677b_1sOhy6w6-aTWDLKnTNWjIselyDdVVhL8_3ZZNg-bNWBNbyeCFwBRPpGeSnONtBk-Wy1wFf5fcXwAtyC9pGx5FQIUK-AubdQkVyubqN6XbJk3vG3OmScH11zM2ek_WY6p_McUf4nDVeM7yziv0QjNURNOEm1Mfta2iQgmJB5rXYRVLsb_p9-H_OEwYAcK1Mk; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765361142609%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":0,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Permits/ExportPermitToExcel",
+          "host": [
+            "{{baseURL}}Permits"
+          ],
+          "path": [
+            "ExportPermitToExcel"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PLANS_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/plans-managements"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765356898554%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Plans/GetGrid",
+          "host": [
+            "{{baseURL}}Plans"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PLANS_FILTER_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/plans-managements"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765373802321%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":10,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"serialNo\":\"498484\",\"planType\":\"SCHEDULING\",\"createdDate\":{\"Value\":\"2025-12-10\",\"Value2\":\"2025-12-10\",\"Operation\":\"Between\"},\"statusCode\":\"ACTIVE\",\"yardId\":{\"value\":\"4\",\"Operation\":\"Equal\"},\"releaseType\":{\"value\":\"CARGO\",\"Operation\":\"Equal\"},\"permitType\":\"GENERAL_CARGO_EXPORT\"}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}Plans/GetGrid",
+          "host": [
+            "{{baseURL}}Plans"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PLANS_USER-GET_VIEW",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/plans-managements/view/59"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765373881027%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}Plans/GetView?id=59",
+          "host": [
+            "{{baseURL}}Plans"
+          ],
+          "path": [
+            "GetView"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "59"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FINANCIAL_TRANSACTIONS_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/financial-transactions"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765357156572%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}FinancialTransactions/GetGrid",
+          "host": [
+            "{{baseURL}}FinancialTransactions"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FINANCIAL_TRANSACTIONS_FILTER_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/financial-transactions"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765374387554%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":10,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"transactionType\":\"CREATE_PERMIT\",\"transactionNumber\":\"446546\",\"stakeholderName\":\"momen\",\"paymentMethodCode\":\"FROM_BALANCE\",\"statusCode\":{\"value\":\"PROCESSED\",\"Operation\":\"Equal\"},\"createdDate\":{\"Value\":\"2025-12-09\",\"Value2\":\"2025-12-17\",\"Operation\":\"Between\"}}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}FinancialTransactions/GetGrid",
+          "host": [
+            "{{baseURL}}FinancialTransactions"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "FINANCIAL_TRANSACTIONS_EXPORT_EXCEL",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6IjM1MWVjYmI3LTA4NmQtNGUyOS05ZTE3LTNkYzQzMWI5NWUzZCIsIm5iZiI6MTc2NTM2MDQ2OCwiZXhwIjoxNzY1MzY3NjY4LCJpYXQiOjE3NjUzNjA0Njh9.Gd889eIQT_1SLDcIo5ecSEzYlz9yRrKnXI8DmFCWRDI"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/financial-transactions"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7PUOfyXzSZiJJ3yHp0hVGyxpHeF5jMG0XwEM7fflP6UO9VxEoVZ7b4_0Kd2h-ADBUPlnCQgQYJRQRurNenlEFgszfQp7V1IxAgFRMkYepc_1bFJpF6x6-ahfyYpTTPH8TZai_yg40N2eYmVXi2JMYZldudySTPZYuaucVsRUX7hlKZEwCEC_cq-mn6I1EOvoB_dYhOyYedK1dUrwBbHiqenfWUq_ybIhPpF8hpoVInEe4EpQcnmBgL0SuzsHLkvGNez0a6JUlGRga3lljZQl_wY8OET0BrUs3U9It6gzP_KcNv2cEowCKxti8ijfy6sUyR9FL5zbuoE4mgKyb3S50ykorbFThnYQFEo0AZESJzLqkA5ONWSHh2OxwfyZ3NIr8j3ddu53GEokZCP6GGKLxQc5OPPg7zIwVlucv-MjdXpK_9E7hF8Q3hOHiE_G13_ahdkwCXL6SgUZfI44et13aXcGFEqWsrCL5wXKDKQO229ekPRz9o0msEsw_p_Aov0UIGy7hM2u_rrLXPse5jIgTDgjCikf925tonKEckQD5QG2nWXurVf3ciXVTFKPjeiYgkwekCMi3xKH6aRlR4CsC85y3UyqrWwd0DUyqsBAmnudfTMtyn4c-4y9UddyBDvczSPm4bPiRVVzUTWkNTMZwXE9_oMFTEJz4e7z-TDxkW4PIM13_cQesx77jYrs979Hl5b2ZKpVPj8X6Km9SdoxOv1F5ccfwUzGwdLWOlP7ThbcpG5Fo8-Zw-y1QCahJ677b_1sOhy6w6-aTWDLKnTNWjIselyDdVVhL8_3ZZNg-bNWBNbyeCFwBRPpGeSnONtBk-Wy1wFf5fcXwAtyC9pGx5FQIUK-AubdQkVyubqN6XbJk3vG3OmScH11zM2ek_WY6p_McUf4nDVeM7yziv0QjNURNOEm1Mfta2iQgmJB5rXYRVLsb_p9-H_OEwYAcK1Mk; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765361898874%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          },
+          {
+            "key": "Priority",
+            "value": "u=0"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":0,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}FinancialTransactions/ExcelReport",
+          "host": [
+            "{{baseURL}}FinancialTransactions"
+          ],
+          "path": [
+            "ExcelReport"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LOG_GATES_TRANSACTIONS_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6ImM2ZWZhMWM0LWNiZDAtNDlhMi05YzA5LTAzN2ZiMzUzOWE4OSIsIm5iZiI6MTc2NTM1Mjc3MCwiZXhwIjoxNzY1MzU5OTcwLCJpYXQiOjE3NjUzNTI3NzB9.SRUATpaxlUkjRyUedSFDbIda3m3_es6Fb1VhWLiC_is"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/transactions"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765357437339%2C%22019b0739-6a56-792a-9b64-57ada3b31931%22%2C1765352761942%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_7A-Q2uxuaZG1ZzNHS2zaeNb9mxPZjZaGy34jUt5sCpEPUd4EU3MId0aLkICxA9rKrjC11ujGgk1DIGqIWsP227efZJo6uzcR1FhwkUto9tlJD5QwLEtsiIpRf_JIG1fVBrc-9c0fA2DSF9osc4GNzvry5EOGIsSpnLwPZF0Sj1VyfpzEh-oG29p6lxiwpzL8IMDIFBoz_SjMiXOBRqisvka_PkBINsn-mCbGqcdevny5tfdFtm1UgWzyHYZY-G0CZcjKMkdIGy8JhTFoCkiKjCI9BeJZAgLdIGL91ZrSspaN4ul4KjT1qP3vQORBfjgGLraDKaQUyCJNlOL5eoN8OtKYhHfZtnqihcqOu-_lmXhed0ek1v_eOQ8v_Eii9XhtlUiDdVTA0Web-RgaO7m3EQM--dbpGmh9Rs5ZUql9d_VQC4nZxpuXR1Ez0jzoEOqsyQiIZuLNdfiFV7gWKXleTwWQI8i80OIZI0q5oZrEN6L7Qk-wgVfLg4uhq2apB2S6eO-KB55X4dDWOZ7cTquzfbZW9PtngSsC0FxtqqmjJ31_AaCzaqYUOkd6_aSzqe4_jeTnb5DmdiiU87iOcRzR36U6ZGvr7Jti6pzJ8zEUkjMC6nQUOjDEuRTFb-CFm7Y7bYHNQx_47xhvqbj_UArA3forIgVoZjZEa-_l5qFZKSiqO6g4XqiIiJq2lIgDA4nAwdpnKIl58N1DzJtpYV-JyLGeMjQ0Mzl1KngRIQHvLel4KHp72ss8Lr2Ehstn7h2wQ3EMWvuH3BawRo8JAsqk0bi4whthmenmM2IA0l38x9TLxwg4Jvz-5xPx825PfuU_KWZFmr4d8F23dRE9ST7ifOcLmNK3WXYCP894VL8CD5PP7-nEPELwLtAtzR_ULrG9uAb9wtCLMCKkF5r1LRBmvuZyamN8NygWWboaeZd1JUgJX2yrYas6oBqrbZ4k92rLU"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":5000,\"sort\":\"\",\"query\":\"\",\"filterData\":{}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}LogGatesTransactions/GetGrid",
+          "host": [
+            "{{baseURL}}LogGatesTransactions"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LOG_GATES_TRANSACTIONS_FILTER_GET_GRID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/transactions"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765374646311%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"pageIndex\":1,\"pageSize\":10,\"sort\":\"\",\"query\":\"\",\"filterData\":{\"plateNumber\":\"34234\",\"plateCodeEn\":\"A\",\"gateCode\":\"KHB-EXT1\",\"statusCode\":{\"value\":\"ASSIGNED\",\"Operation\":\"Equal\"},\"id\":\"48646848\",\"permitNumber\":\"4894984\",\"creationDate\":{\"Value\":\"2025-12-10\",\"Value2\":\"2025-12-10\",\"Operation\":\"Between\"}}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}LogGatesTransactions/GetGrid",
+          "host": [
+            "{{baseURL}}LogGatesTransactions"
+          ],
+          "path": [
+            "GetGrid"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LOG_GATES_TRANSACTIONS_GET_VIEW",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/transactions/view/2273"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765374936028%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "url": {
+          "raw": "{{baseURL}}LogGatesTransactions/GetView?Id=2273",
+          "host": [
+            "{{baseURL}}LogGatesTransactions"
+          ],
+          "path": [
+            "GetView"
+          ],
+          "query": [
+            {
+              "key": "Id",
+              "value": "2273"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LOG_GATES_TRANSACTIONS_GET_LOG",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{Admin_Token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:145.0) Gecko/20100101 Firefox/145.0"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en-US,en;q=0.5"
+          },
+          {
+            "key": "Accept-Encoding",
+            "value": "gzip, deflate, br, zstd"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9zaWQiOiJkYTg5ZGUxYi02NDU5LTQxNGMtYmRlMi1mZmYzNDU0ZDQzNDkiLCJ1bmlxdWVfbmFtZSI6Ijg5N2VmMjhjLTM1YzktNDNlMi1hMDk1LTM0NzIyYWI5MjE2MiIsIm5iZiI6MTc2NTM2ODAxMiwiZXhwIjoxNzY1Mzc1MjEyLCJpYXQiOjE3NjUzNjgwMTJ9.cTskyeKT3qaolOzfhHp1bXlzROAtZ1I5IOcv2KOOt_4"
+          },
+          {
+            "key": "languageCode",
+            "value": "en"
+          },
+          {
+            "key": "X-KL-kes-Ajax-Request",
+            "value": "Ajax_Request"
+          },
+          {
+            "key": "Origin",
+            "value": "https://khb.nafith.net"
+          },
+          {
+            "key": "Connection",
+            "value": "keep-alive"
+          },
+          {
+            "key": "Referer",
+            "value": "https://khb.nafith.net/app/transactions/activity-log/2273"
+          },
+          {
+            "key": "Cookie",
+            "value": "Path=/; Path=/; .AspNetCore.Identity.Application=CfDJ8MT0zHFfN2tMkDkawpzUr_6IkzNjfzkV1ZgvtNdoe13TQ_hbAKZB7kiungr9CpdFMKzHte1xkB05c6OuNqA9M7J8FpqHKibtzDJbd5EJEFftdkKPCvcz6pL-7i96O9AOSCVHHdfrqy1P0kkKXRDpa7WkVvDiK5F5CGar3KmQ7saKnq5BEHzeEOl1XuJGLMNXtYjE18jDsg459mjPTl0F-krJYMkYeILfuej4jc_jC3P0RZlOeJqBBsT-mAwLPXY9NZdmS--_xlLMkDVCQUT6aPw432eNqmHsPh_QRI-oLJ39PiCq0dgO4mMhEfs8nHRTxPbmcWAaTlAiw35VtKuWfrgqUFNkN85bFeXZETFx2Nn1M6Yb8t6lB2gl6m1QvoDsF8oLGnzM_UYZsyrzFPZ3NohLzBHo475HPHEdrq21Qc0fXJQulkLejwLKSVCFnOSn10hY7avM6gUoFTrCdtUNaXzkn8CG4AHjkv5f25Lm5v9j0zRb9jsBnq9MZswtyLCEDj5RJC2IFIjo1qHNhGjpCLGTcXrl7tFBKfxMXjEzRSAxKIEJ-uK9Sh3ysE1_5WPOHBzjv9zlGa1LVkkuWE6rNV6Zwz-pUsRMPoy6rCHGXhilLcF5IUh3eF158PLGSRf3jmIw39A2ln-4yuLGyC-YtL2YMhO9h9-ciSxp4t7dvg9xbRY1nUJkFPGOCRiFR_I1KT-yskQDWGFBXuv5nVZBewS_TZKSAza1Q4Rr0hDESEOiOWqfSodxc0ldwXc-fm-y11L7SIlAZFCw09R0yh8ZsMQF1o7oCfPRHbQ1JPukne0xEpr6zZMzW2kXCbUbsVJdNppSc0ru08GVg5Z9Ap6ARAxpZ1hJmaSvfbk23zELPgJEYh6DcoJRPaEEzIFb86H5H38myRXIKEtbaLpg8wC9CByQyvJrSX4s1ob_WJcYta8sq1cyd7gn-EeRUVuMwkBfX5-gh6f5jhWsQDyj2KlxzPg; ph_phc_epUtRaqKaZzyfbwmaCkrWVH1HjuHaSjvA4H32IJxF0G_posthog=%7B%22distinct_id%22%3A%2201987a41-c001-7882-8e18-a49f08bceacb%22%2C%22%24sesid%22%3A%5B1765375080710%2C%22019b0817-1b11-7cc8-8aeb-2ef862e81119%22%2C1765367290641%5D%2C%22%24initial_person_info%22%3A%7B%22r%22%3A%22%24direct%22%2C%22u%22%3A%22https%3A%2F%2Fkhb.nafith.net%2Fapp%2Fusers%22%7D%7D"
+          },
+          {
+            "key": "Sec-Fetch-Dest",
+            "value": "empty"
+          },
+          {
+            "key": "Sec-Fetch-Mode",
+            "value": "cors"
+          },
+          {
+            "key": "Sec-Fetch-Site",
+            "value": "same-origin"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"EntityId\":\"2273\",\"ActionName\":\"\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}LogGatesTransactions/GetLog",
+          "host": [
+            "{{baseURL}}LogGatesTransactions"
+          ],
+          "path": [
+            "GetLog"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "KHB-CACHING",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Cookie",
+            "value": "Path=/"
+          }
+        ],
+        "url": {
+          "raw": "https://khb.nafith.net/api/Caching/CacheAuthorityAndOwnership",
+          "protocol": "https",
+          "host": [
+            "khb",
+            "nafith",
+            "net"
+          ],
+          "path": [
+            "api",
+            "Caching",
+            "CacheAuthorityAndOwnership"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "KHB_CACHING_CAPTIONS",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          }
+        ],
+        "url": {
+          "raw": "https://khb.nafith.net/api/CacheData/CacheLTCaptions",
+          "protocol": "https",
+          "host": [
+            "khb",
+            "nafith",
+            "net"
+          ],
+          "path": [
+            "api",
+            "CacheData",
+            "CacheLTCaptions"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "KHB_CACHING_TRANSLATION",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": "*/*"
+          }
+        ],
+        "url": {
+          "raw": "https://khb.nafith.net/api/CacheData/CacheTranslationTextContents",
+          "protocol": "https",
+          "host": [
+            "khb",
+            "nafith",
+            "net"
+          ],
+          "path": [
+            "api",
+            "CacheData",
+            "CacheTranslationTextContents"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
