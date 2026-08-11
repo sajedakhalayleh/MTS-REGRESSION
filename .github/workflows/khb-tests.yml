@@ -31,8 +31,8 @@ jobs:
           server_port: 587
           username: skhalayleh@nafith.com
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "تقرير فحوصات KHB - ${{ github.run_id }}"
+          subject: "KHB-Live - ${{ github.run_id }}"
           to: haljassem@nafith.com
           from: skhalayleh@nafith.com
-          body: "مرفق تقرير فحوصات API لآخر تشغيل. النتيجة: ${{ job.status }}"
+          body: "KHB daily health test (Live): ${{ job.status }}"
           attachments: khb-report.html
