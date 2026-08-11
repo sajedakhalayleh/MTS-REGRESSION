@@ -32,7 +32,7 @@ jobs:
           username: skhalayleh@nafith.com
           password: ${{ secrets.MAIL_PASSWORD }}
           subject: "تقرير فحوصات KHB - ${{ github.run_id }}"
-          to: mrababah@nafith.com
+          to: haljassem@nafith.com
           from: skhalayleh@nafith.com
           body: "مرفق تقرير فحوصات API لآخر تشغيل. النتيجة: ${{ job.status }}"
           attachments: khb-report.html
