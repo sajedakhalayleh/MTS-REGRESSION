@@ -1,6 +1,10 @@
 name: API Tests
 on:
   push:
+    paths:
+      - 'NFLOW_MTS_AUTOMATED.postman_collection.json'
+      - 'NFLOW_MTS.postman_environment.json'
+      - '.github/workflows/api-tests.yml'
   workflow_dispatch:
   schedule:
     - cron: '0 6 * * *'   # كل يوم الساعة 9 صباحًا بتوقيت الأردن (6 UTC)
