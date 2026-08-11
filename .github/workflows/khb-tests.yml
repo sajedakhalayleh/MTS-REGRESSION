@@ -13,9 +13,11 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g newman newman-reporter-htmlextra
-      - run: newman run KHB_LIVE_DO_NOT_UPDATE_______postman_collection.json -e KHBLIVE.postman_environment.json --reporters "cli,htmlextra" --reporter-htmlextra-export khb-report.html
+      - run: newman run KHB_LIVE_DO_NOT_UPDATE______postman_collection.json -e KHBLIVE.postman_environment.json --reporters "cli,htmlextra" --reporter-htmlextra-export khb-report.html
       - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: khb-report
           path: khb-report.html
+
+
