@@ -1,7 +1,7 @@
 name: KHB Live Tests
 on:
   push:
-      paths:
+    paths:
       - 'KHB_LIVE_DO_NOT_UPDATE!!!!!!.postman_collection.json'
       - 'KHBLIVE.postman_environment.json'
       - '.github/workflows/khb-tests.yml'
@@ -17,11 +17,22 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g newman newman-reporter-htmlextra
-      - run: newman run KHB_LIVE_DO_NOT_UPDATE!!!!!!.postman_collection.json -e KHBLIVE.postman_environment.json --reporters "cli,htmlextra" --reporter-htmlextra-export khb-report.html
+      - run: newman run "KHB_LIVE_DO_NOT_UPDATE!!!!!!.postman_collection.json" -e KHBLIVE.postman_environment.json --reporters "cli,htmlextra" --reporter-htmlextra-export khb-report.html
       - if: always()
         uses: actions/upload-artifact@v4
         with:
           name: khb-report
           path: khb-report.html
-
-
+      - name: Send Email Report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: skhalayleh@nafith.com
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "تقرير فحوصات KHB - ${{ github.run_id }}"
+          to: mrababah@nafith.com
+          from: skhalayleh@nafith.com
+          body: "مرفق تقرير فحوصات API لآخر تشغيل. النتيجة: ${{ job.status }}"
+          attachments: khb-report.html
