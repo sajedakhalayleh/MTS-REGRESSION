@@ -1,6 +1,10 @@
 name: KHB Live Tests
 on:
   push:
+      paths:
+      - 'KHB_LIVE_DO_NOT_UPDATE!!!!!!.postman_collection.json'
+      - 'KHBLIVE.postman_environment.json'
+      - '.github/workflows/khb-tests.yml'
   workflow_dispatch:
   schedule:
     - cron: '0 7 * * *'   # كل يوم الساعة 10 صباحًا بتوقيت الأردن
