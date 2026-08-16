@@ -352,11 +352,79 @@ public class NafithAutomation {
 
     protected WebElement findParentMenu(String parentMenuText) {
 
-        try {
+        // -----------------------------------------------------
+        // Locator الخاص بالخطط حسب الـHTML الفعلي
+        // -----------------------------------------------------
 
-            // -----------------------------------------------------
-            // انتظر لحد ما يكون الـ Parent موجود بالـ DOM
-            // -----------------------------------------------------
+        if ("الخطط".equals(parentMenuText)) {
+
+            try {
+
+                List<WebElement> plansMenu =
+                        driver.findElements(
+                                By.xpath(
+                                        "//button[@data-sidebar='menu-button' " +
+                                                "and .//span[normalize-space()='الخطط']]"
+                                )
+                        );
+
+                System.out.println(
+                        "===== PLANS MENU DEBUG ====="
+                );
+
+                System.out.println(
+                        "Plans buttons found: "
+                                + plansMenu.size()
+                );
+
+                for (WebElement menu : plansMenu) {
+
+                    try {
+
+                        System.out.println(
+                                "PLANS BUTTON TEXT: ["
+                                        + menu.getText()
+                                        + "] DISPLAYED: ["
+                                        + menu.isDisplayed()
+                                        + "]"
+                        );
+
+                        if (menu.isDisplayed()) {
+
+                            System.out.println(
+                                    "Plans menu found successfully."
+                            );
+
+                            return menu;
+                        }
+
+                    } catch (Exception ignored) {
+                    }
+                }
+
+                System.out.println(
+                        "Plans menu was not found using the new locator."
+                );
+
+                System.out.println(
+                        "===== END PLANS MENU DEBUG ====="
+                );
+
+            } catch (Exception e) {
+
+                System.out.println(
+                        "Error while finding Plans menu: "
+                                + e.getMessage()
+                );
+            }
+        }
+
+
+        // -----------------------------------------------------
+        // انتظر لحد ما يكون الـ Parent موجود بالـ DOM
+        // -----------------------------------------------------
+
+        try {
 
             wait.until(
                     ExpectedConditions.presenceOfElementLocated(
@@ -377,7 +445,7 @@ public class NafithAutomation {
 
 
         // -----------------------------------------------------
-        // نفس الـ locator الأصلي بدون تغيير
+        // الـ locator الأصلي لباقي الـ Parent Menus
         // -----------------------------------------------------
 
         List<WebElement> buttons =
@@ -539,7 +607,6 @@ public class NafithAutomation {
 
         return null;
     }
-
     // =========================================================
     // SAFE CLICK
     // =========================================================
