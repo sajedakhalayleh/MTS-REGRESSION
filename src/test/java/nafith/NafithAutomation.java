@@ -350,13 +350,30 @@ public class NafithAutomation {
     // FIND PARENT MENU
     // =========================================================
 
-    protected WebElement findParentMenu(
-            String parentMenuText) {
+    protected WebElement findParentMenu(String parentMenuText) {
+
+        try {
+
+            // انتظر لحد ما يكون الـParent موجود بالـDOM
+            wait.until(
+                    ExpectedConditions.presenceOfElementLocated(
+                            By.xpath(
+                                    "//button[" +
+                                            ".//span[normalize-space(text())='" +
+                                            parentMenuText +
+                                            "']" +
+                                            "]"
+                            )
+                    )
+            );
+
+        } catch (Exception ignored) {
+            // إذا ما ظهر، نكمل للـfallback الموجود تحت
+        }
 
 
         // -----------------------------------------------------
-        // الـ Parent عندك عبارة عن BUTTON
-        // والاسم موجود داخل SPAN
+        // نفس الـlocator الأصلي بدون تغيير
         // -----------------------------------------------------
 
         List<WebElement> buttons =
