@@ -354,7 +354,10 @@ public class NafithAutomation {
 
         try {
 
-            // انتظر لحد ما يكون الـParent موجود بالـDOM
+            // -----------------------------------------------------
+            // انتظر لحد ما يكون الـ Parent موجود بالـ DOM
+            // -----------------------------------------------------
+
             wait.until(
                     ExpectedConditions.presenceOfElementLocated(
                             By.xpath(
@@ -368,12 +371,13 @@ public class NafithAutomation {
             );
 
         } catch (Exception ignored) {
-            // إذا ما ظهر، نكمل للـfallback الموجود تحت
+
+            // إذا ما ظهر، نكمل للـ fallback الموجود تحت
         }
 
 
         // -----------------------------------------------------
-        // نفس الـlocator الأصلي بدون تغيير
+        // نفس الـ locator الأصلي بدون تغيير
         // -----------------------------------------------------
 
         List<WebElement> buttons =
@@ -386,20 +390,50 @@ public class NafithAutomation {
                                         "]"
                         )
                 );
-        
-        System.out.println("===== DEBUG PARENT MENU: " + parentMenuText + " =====");
+
+
+        // -----------------------------------------------------
+        // DEBUG: Parent Menu Buttons
+        // -----------------------------------------------------
+
+        System.out.println(
+                "===== DEBUG PARENT MENU: "
+                        + parentMenuText
+                        + " ====="
+        );
 
         for (WebElement button : buttons) {
+
             try {
-                System.out.println("BUTTON TEXT: [" + button.getText() + "]");
-                System.out.println("BUTTON DISPLAYED: [" + button.isDisplayed() + "]");
+
+                System.out.println(
+                        "BUTTON TEXT: ["
+                                + button.getText()
+                                + "]"
+                );
+
+                System.out.println(
+                        "BUTTON DISPLAYED: ["
+                                + button.isDisplayed()
+                                + "]"
+                );
+
             } catch (Exception e) {
-                System.out.println("Could not read button");
+
+                System.out.println(
+                        "Could not read button"
+                );
             }
         }
 
-        System.out.println("===== END DEBUG =====");
+        System.out.println(
+                "===== END DEBUG ====="
+        );
 
+
+        // -----------------------------------------------------
+        // إذا لقينا Button ظاهر
+        // -----------------------------------------------------
 
         for (WebElement button : buttons) {
 
@@ -416,7 +450,8 @@ public class NafithAutomation {
 
 
         // -----------------------------------------------------
-        // fallback
+        // Fallback
+        // البحث عن أي Element يحتوي النص
         // -----------------------------------------------------
 
         List<WebElement> elements =
@@ -428,6 +463,47 @@ public class NafithAutomation {
                         )
                 );
 
+
+        // -----------------------------------------------------
+        // DEBUG: Text Elements
+        // -----------------------------------------------------
+
+        System.out.println(
+                "===== DEBUG TEXT ELEMENTS: "
+                        + parentMenuText
+                        + " ====="
+        );
+
+        for (WebElement element : elements) {
+
+            try {
+
+                System.out.println(
+                        "ELEMENT TAG: ["
+                                + element.getTagName()
+                                + "] TEXT: ["
+                                + element.getText()
+                                + "] DISPLAYED: ["
+                                + element.isDisplayed()
+                                + "]"
+                );
+
+            } catch (Exception e) {
+
+                System.out.println(
+                        "Could not read element"
+                );
+            }
+        }
+
+        System.out.println(
+                "===== END TEXT ELEMENTS ====="
+        );
+
+
+        // -----------------------------------------------------
+        // البحث عن أقرب Parent Button
+        // -----------------------------------------------------
 
         for (WebElement element : elements) {
 
@@ -457,9 +533,12 @@ public class NafithAutomation {
         }
 
 
+        // -----------------------------------------------------
+        // لم يتم العثور على Parent Menu
+        // -----------------------------------------------------
+
         return null;
     }
-
 
     // =========================================================
     // SAFE CLICK
