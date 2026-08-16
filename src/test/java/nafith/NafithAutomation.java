@@ -63,11 +63,14 @@ public class NafithAutomation {
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
-
+        
         options.addArguments("--start-maximized");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1920,1080");
+        if (System.getenv("GITHUB_ACTIONS") != null) {
+            options.addArguments("--headless=new");
+        }
 
         driver = new ChromeDriver(options);
 
@@ -80,8 +83,9 @@ public class NafithAutomation {
         login();
 
         // Maximize مرة واحدة
-        maximizeWindow();
-    }
+        if (System.getenv("GITHUB_ACTIONS") == null) {
+            maximizeWindow();
+        }    }
 
 
     // =========================================================
