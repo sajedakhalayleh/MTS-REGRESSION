@@ -386,6 +386,19 @@ public class NafithAutomation {
                                         "]"
                         )
                 );
+        
+        System.out.println("===== DEBUG PARENT MENU: " + parentMenuText + " =====");
+
+        for (WebElement button : buttons) {
+            try {
+                System.out.println("BUTTON TEXT: [" + button.getText() + "]");
+                System.out.println("BUTTON DISPLAYED: [" + button.isDisplayed() + "]");
+            } catch (Exception e) {
+                System.out.println("Could not read button");
+            }
+        }
+
+        System.out.println("===== END DEBUG =====");
 
 
         for (WebElement button : buttons) {
