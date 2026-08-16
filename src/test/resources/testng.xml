@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<suite name="Nafith KHB Automation Suite" verbose="1" parallel="none">
+
+    <test name="Login and Maximize Sanity Checks">
+        <classes>
+            <class name="nafith.tests.LoginAndMaximizeTest"/>
+        </classes>
+    </test>
+
+    <test name="Fleet Screen">
+        <classes>
+            <class name="nafith.tests.FleetScreenTest"/>
+        </classes>
+    </test>
+
+    <test name="Users Screen">
+        <classes>
+            <class name="nafith.tests.UsersScreenTest"/>
+        </classes>
+    </test>
+
+    <test name="Tags Screen">
+        <classes>
+            <class name="nafith.tests.TagsScreenTest"/>
+        </classes>
+    </test>
+
+    <test name="Cargo Release Permits">
+        <classes>
+            <class name="nafith.tests.CargoReleasePermitsScreenTest"/>
+        </classes>
+    </test>
+
+    <test name="Permits Screen">
+        <classes>
+            <class name="nafith.tests.PermitsScreenTest"/>
+        </classes>
+    </test>
+
+    <test name="Plans Screen">
+        <classes>
+            <class name="nafith.tests.PlansScreenTest"/>
+        </classes>
+    </test>
+
+    <test name="Financial Transactions">
+        <classes>
+            <class name="nafith.tests.FinancialTransactionsScreenTest"/>
+        </classes>
+    </test>
+
+    <test name="Gate Transactions">
+        <classes>
+            <class name="nafith.tests.GateTransactionsScreenTest"/>
+        </classes>
+    </test>
+
+</suite>
