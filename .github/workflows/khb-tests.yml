@@ -17,12 +17,12 @@ jobs:
         with:
           node-version: '20'
       - run: npm install -g newman newman-reporter-htmlextra
-      - run: newman run "KHB_LIVE_DO_NOT_UPDATE!!!!!!.postman_collection.json" -e KHBLIVE.postman_environment.json --reporters "cli,htmlextra" --reporter-htmlextra-export khb-report.html
+      - run: newman run "KHB_LIVE_DO_NOT_UPDATE!!!!!!.postman_collection.json" -e KHBLIVE.postman_environment.json --reporters "cli,htmlextra" --reporter-htmlextra-export joborders-report.html
       - if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: khb-report
-          path: khb-report.html
+          name: joborders-report
+          path: joborders-report.html
       - name: Send Email Report
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -35,4 +35,4 @@ jobs:
           to: skhalayleh@nafith.com
           from: qatest@nafith.com
           body: "JO borders daily health test (Live): ${{ job.status }}"
-          attachments: khb-report.html
+          attachments: joborders-report.html
