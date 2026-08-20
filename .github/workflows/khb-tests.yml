@@ -31,8 +31,8 @@ jobs:
           server_port: 587
           username: qatest@nafith.com
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "KHB-Live - ${{ github.run_id }}"
+          subject: "JOBORDERS-Live - ${{ github.run_id }}"
           to: haljassem@nafith.com, skhalayleh@nafith.com
           from: qatest@nafith.com
-          body: "KHB daily health test (Live): ${{ job.status }}"
-          attachments: khb-report.html
+          body: "JO borders daily health test (Live): ${{ job.status }}"
+          attachments: joborders-report.html
